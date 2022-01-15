@@ -4,11 +4,12 @@ public class GridController : MonoBehaviour
 {
     [SerializeField]
     private Vector2 _offset = new Vector2(-5.45f, 4);
-    [SerializeField]
     private LevelData _currentLevelData;
 
-    private void Start()
+    public void BuildGrid(LevelData levelData)
     {
+        _currentLevelData = levelData;
+        ClearGrid();
         BuildGrid();
     }
 
@@ -42,6 +43,15 @@ public class GridController : MonoBehaviour
                 blockTile.SetData(blockColor);
                 blockTile.Init();
             }
+        }
+    }
+
+    private void ClearGrid()
+    {
+        int totalChildren = transform.childCount;
+        for (int i = totalChildren - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 
