@@ -24,6 +24,10 @@ public class BlockTile : MonoBehaviour
     private BlockType _type = BlockType.Big;
     [SerializeField] 
     private BlockColor _color = BlockColor.Yellow;
+    [SerializeField]
+    private int _score = 10;
+    
+    public int Score => _score;
     
     private SpriteRenderer _renderer;
     private Collider2D _collider;
