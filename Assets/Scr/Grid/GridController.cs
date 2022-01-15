@@ -100,4 +100,14 @@ public class GridController : MonoBehaviour
 
         return totalActiveBlocks;
     }
+
+    public BlockTile GetBlockBy(int id)
+    {
+        if (_blockTiles.TryGetValue(id, out BlockTile block))
+        {
+            return block;
+        }
+
+        return null;
+    }
 }
