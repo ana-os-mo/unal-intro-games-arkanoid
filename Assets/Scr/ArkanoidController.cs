@@ -26,12 +26,14 @@ public class ArkanoidController : MonoBehaviour
     {
         ArkanoidEvent.OnBallReachDeadZoneEvent += OnBallReachDeadZone;
         ArkanoidEvent.OnBlockDestroyedEvent += OnBlockDestroyed;
+        ArkanoidEvent.OnPowerUpPaddleContactEvent += OnPowerUpPaddleContact;
     }
 
     private void OnDestroy()
     {
         ArkanoidEvent.OnBallReachDeadZoneEvent -= OnBallReachDeadZone;
         ArkanoidEvent.OnBlockDestroyedEvent -= OnBlockDestroyed;
+        ArkanoidEvent.OnPowerUpPaddleContactEvent -= OnPowerUpPaddleContact;
     }
     
     private void Update()
@@ -118,6 +120,14 @@ public class ArkanoidController : MonoBehaviour
                 SetInitialBall();
                 _gridController.BuildGrid(_levels[_currentLevel]);
             }
+        }
+    }
+
+    private void OnPowerUpPaddleContact (PowerUps powerUp)
+    {
+        if (powerUp.Kind == PowerUpKind.LargePaddle)
+        {
+            
         }
     }
 }

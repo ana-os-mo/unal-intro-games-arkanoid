@@ -17,6 +17,9 @@ public enum BlockColor
 
 public class BlockTile : MonoBehaviour
 {
+    private PowerUps _powerUpPrefab = null;
+
+    private const string POWER_UP_PREFAB_PATH = "Prefabs/PowerUp";
     private const string BLOCK_BIG_PATH = "Sprites/BlockTiles/Big/Big_{0}_{1}";
     private const string BLOCK_SMALL_PATH = "Sprites/BlockTiles/Small/Small_{0}_1";
     
@@ -52,23 +55,41 @@ public class BlockTile : MonoBehaviour
         _collider.enabled = true;
         
         _renderer = GetComponentInChildren<SpriteRenderer>();
-
         _renderer.sprite = GetBlockSprite(_type, _color, 0);
     }
     
+    // capsula.position = this.position;
+
     public void OnHitCollision(ContactPoint2D contactPoint)
     {
         _currentHits++;
+        float rand = Random.value;
         if (_currentHits >= _totalHits)
         {
             _collider.enabled = false;
             gameObject.SetActive(false);
             ArkanoidEvent.OnBlockDestroyedEvent?.Invoke(_id);
+
+            if (rand <= 0.35)
+            {
+                Vector2 powerUpPosition = new Vector2(this.transform.position.x, this.transform.position.y);
+                PowerUps powerUp = CreatePowerUpAt(powerUpPosition);
+                powerUp.Init();
+            }
         }
         else
         {
             _renderer.sprite = GetBlockSprite(_type, _color, _currentHits);
         }
+    }
+
+    private PowerUps CreatePowerUpAt(Vector2 position)
+    {
+        if (_powerUpPrefab == null)
+        {
+            _powerUpPrefab = Resources.Load<PowerUps>(POWER_UP_PREFAB_PATH);
+        }
+        return Instantiate(_powerUpPrefab, position, Quaternion.identity);
     }
     
     static Sprite GetBlockSprite(BlockType type, BlockColor color, int state)
