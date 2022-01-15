@@ -69,4 +69,10 @@ public class Ball : MonoBehaviour
         ContactPoint2D contactPoint = other.contacts[0];
         blockTileHit.OnHitCollision(contactPoint);
     }
+
+    public void Hide()
+    {
+        _collider.enabled = false;
+        gameObject.SetActive(false);
+    }
 }
