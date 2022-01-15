@@ -67,7 +67,7 @@ public class GridController : MonoBehaviour
     {
         if (type == BlockType.Big || type == BlockType.Small)
         {
-            return new Vector2(1.5f, 0.5f);
+            return new Vector2(1.53f, 0.51f);
         }
 
         return Vector2.zero;

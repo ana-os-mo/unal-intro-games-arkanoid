@@ -5,4 +5,7 @@ public static class ArkanoidEvent
 
    public delegate void BlockDestroyedAction(int blockID);
    public static BlockDestroyedAction OnBlockDestroyedEvent;
+
+   public delegate void PowerUpPaddleContactAction(PowerUps powerUp);
+   public static PowerUpPaddleContactAction OnPowerUpPaddleContactEvent;
 }
