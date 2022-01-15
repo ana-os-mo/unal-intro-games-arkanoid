@@ -931,6 +931,7 @@ MonoBehaviour:
   _levels:
   - {fileID: 11400000, guid: bd73b0d61f6bf1d4388c4a14bfb4a0ae, type: 2}
   - {fileID: 11400000, guid: 9a1e67786b4591342b6e0f4638aa5991, type: 2}
+  _scaledPaddle: {fileID: 864628328}
 --- !u!4 &1825286782
 Transform:
   m_ObjectHideFlags: 0

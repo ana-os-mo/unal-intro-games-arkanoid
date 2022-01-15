@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public enum PowerUpKind
 {
     LargePaddle,
+    SmallPaddle,
     MultiBall,
     FastBall
 }
@@ -24,15 +23,15 @@ public class PowerUps : MonoBehaviour
 
     public void Init()
     {
+        _rb = GetComponent<Rigidbody2D>();
+        
         _collider = GetComponent<Collider2D>();
         _collider.enabled = true;
-
-        _rb = GetComponent<Rigidbody2D>();
         
         _renderer = GetComponentInChildren<SpriteRenderer>();
 
         // powerUp aleatorio del enum para renderizar
-        _kind = (PowerUpKind)Random.Range(0, 2);
+        _kind = (PowerUpKind)Random.Range(0, 3);
         _renderer.sprite = GetPowerUpSprite(_kind);
     }
 
@@ -51,7 +50,7 @@ public class PowerUps : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("PowerUp hit " + other.name);
+        // Debug.Log("PowerUp hit " + other.name);
         if (other.name == "Paddle")
         {
             _collider.enabled = false;

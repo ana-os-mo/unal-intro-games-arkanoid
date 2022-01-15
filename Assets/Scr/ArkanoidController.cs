@@ -18,7 +18,9 @@ public class ArkanoidController : MonoBehaviour
 
     private Ball _ballPrefab = null;
     private List<Ball> _balls = new List<Ball>();
-
+    
+    [SerializeField]
+    private Paddle _scaledPaddle;
     private int _currentLevel = 0;
     private int _totalScore = 0;
 
@@ -125,9 +127,24 @@ public class ArkanoidController : MonoBehaviour
 
     private void OnPowerUpPaddleContact (PowerUps powerUp)
     {
-        if (powerUp.Kind == PowerUpKind.LargePaddle)
+        PowerUpKind kind = powerUp.Kind;
+
+        if (kind == PowerUpKind.LargePaddle || kind == PowerUpKind.SmallPaddle)
         {
-            
+            Debug.Log("Entra a la opcion de escalado de paddle");
+            _scaledPaddle.ScalePaddle(kind);
+        }
+        else if (kind == PowerUpKind.MultiBall)
+        {
+
+        }
+        else if (kind == PowerUpKind.FastBall)
+        {
+
+        }
+        else
+        {
+            // Other PowerUps
         }
     }
 }
