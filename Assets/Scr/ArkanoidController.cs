@@ -8,6 +8,7 @@ public class ArkanoidController : MonoBehaviour
 {
     private const string BALL_PREFAB_PATH = "Prefabs/Ball";
     private readonly Vector2 BALL_INIT_POSITION = new Vector2(0, -0.86f);
+    private const int PU_BALL_LIMIT = 3;
 
     [SerializeField]
     private GridController _gridController;
@@ -21,6 +22,7 @@ public class ArkanoidController : MonoBehaviour
     
     [SerializeField]
     private Paddle _scaledPaddle;
+
     private int _currentLevel = 0;
     private int _totalScore = 0;
 
@@ -51,6 +53,7 @@ public class ArkanoidController : MonoBehaviour
         _currentLevel = 0;
         _totalScore = 0;
         _gridController.BuildGrid(_levels[0]);
+        _scaledPaddle.ResetPaddle();
         SetInitialBall();
     }
 
@@ -131,12 +134,15 @@ public class ArkanoidController : MonoBehaviour
 
         if (kind == PowerUpKind.LargePaddle || kind == PowerUpKind.SmallPaddle)
         {
-            Debug.Log("Entra a la opcion de escalado de paddle");
+            // Debug.Log("Entra a la opcion de escalado de paddle");
             _scaledPaddle.ScalePaddle(kind);
         }
         else if (kind == PowerUpKind.MultiBall)
         {
-
+            while(_balls.Count < PU_BALL_LIMIT)
+            {
+                SetExtraBall();
+            }
         }
         else if (kind == PowerUpKind.FastBall)
         {
@@ -146,5 +152,12 @@ public class ArkanoidController : MonoBehaviour
         {
             // Other PowerUps
         }
+    }
+
+    private void SetExtraBall()
+    {
+        Ball ballPU = CreateBallAt(BALL_INIT_POSITION);
+        ballPU.Init();
+        _balls.Add(ballPU);
     }
 }

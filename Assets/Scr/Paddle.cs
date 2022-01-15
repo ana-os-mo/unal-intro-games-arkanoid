@@ -42,4 +42,9 @@ public class Paddle : MonoBehaviour
             this.transform.localScale -= new Vector3(0.3f, 0.0f);
         }
     }
+
+    public void ResetPaddle()
+    {
+        this.transform.localScale = new Vector3(1.0f, 1.0f);
+    }
 }
