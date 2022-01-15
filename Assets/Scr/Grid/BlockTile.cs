@@ -36,10 +36,10 @@ public class BlockTile : MonoBehaviour
         _color = color;
     }
 
-    private void Start()
-    {
-        Init();
-    }
+    // private void Start()
+    // {
+    //     Init();
+    // }
 
     public void Init()
     {

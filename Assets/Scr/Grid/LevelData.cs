@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "Data/Level Data")]
+
 public class LevelData : ScriptableObject
 {
     [Range(1, 10)]
