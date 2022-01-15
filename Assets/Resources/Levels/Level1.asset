@@ -17,29 +17,29 @@ MonoBehaviour:
   Rows:
   - BlockAmount: 7
     blockSpacing: 0.1
-    BlockType: 1
-    BlockColor: 0
-  - BlockAmount: 7
-    blockSpacing: 0.1
-    BlockType: 1
-    BlockColor: 1
-  - BlockAmount: 7
-    blockSpacing: 0.1
-    BlockType: 1
+    BlockType: 0
     BlockColor: 2
   - BlockAmount: 7
     blockSpacing: 0.1
     BlockType: 1
-    BlockColor: 3
+    BlockColor: 1
   - BlockAmount: 7
     blockSpacing: 0.1
-    BlockType: 1
-    BlockColor: 4
+    BlockType: 0
+    BlockColor: 2
   - BlockAmount: 7
     blockSpacing: 0.1
     BlockType: 1
     BlockColor: 1
   - BlockAmount: 7
     blockSpacing: 0.1
+    BlockType: 0
+    BlockColor: 2
+  - BlockAmount: 7
+    blockSpacing: 0.1
     BlockType: 1
-    BlockColor: 0
+    BlockColor: 1
+  - BlockAmount: 7
+    blockSpacing: 0.1
+    BlockType: 0
+    BlockColor: 2

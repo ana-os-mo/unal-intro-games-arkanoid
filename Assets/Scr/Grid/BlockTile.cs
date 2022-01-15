@@ -18,7 +18,7 @@ public enum BlockColor
 public class BlockTile : MonoBehaviour
 {
     private const string BLOCK_BIG_PATH = "Sprites/BlockTiles/Big/Big_{0}_{1}";
-    private const string BLOCK_SMALL_PATH = "Sprites/BlockTiles/Small/Small_{0}_{1}";
+    private const string BLOCK_SMALL_PATH = "Sprites/BlockTiles/Small/Small_{0}_1";
     
     [SerializeField] 
     private BlockType _type = BlockType.Big;
@@ -77,7 +77,7 @@ public class BlockTile : MonoBehaviour
         }
         else if (type == BlockType.Small)
         {
-            path = string.Format(BLOCK_SMALL_PATH, color, state);
+            path = string.Format(BLOCK_SMALL_PATH, color);
         }
 
         if (string.IsNullOrEmpty(path))
