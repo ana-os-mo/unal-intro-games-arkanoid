@@ -8,9 +8,9 @@ public class Ball : MonoBehaviour
     [SerializeField]
     private float _initSpeed = 8;
     [SerializeField]
-    private float _minSpeed = 4;
+    private float _minSpeed = 6;
     [SerializeField]
-    private float _maxSpeed = 12;
+    private float _maxSpeed = 10;
     
     private Rigidbody2D _rb;
     private Collider2D _collider;
@@ -74,5 +74,26 @@ public class Ball : MonoBehaviour
     {
         _collider.enabled = false;
         gameObject.SetActive(false);
+    }
+    
+    public void ChangeBallSpeed(PowerUpKind kind)
+    {   
+        if (kind == PowerUpKind.FastBall)
+        {
+            _maxSpeed *= 2;
+            _rb.velocity *= _rb.velocity.normalized * _maxSpeed;
+        }
+        else if (kind == PowerUpKind.SlowBall)
+        {
+            _minSpeed /= 2;
+            _rb.velocity *= _rb.velocity.normalized * _minSpeed;
+        }
+    }
+
+    public void ResetBallSpeed()
+    {
+        _maxSpeed = 14;
+        _minSpeed = 2;
+        _rb.velocity = _rb.velocity.normalized * _initSpeed;
     }
 }

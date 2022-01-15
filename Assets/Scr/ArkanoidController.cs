@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-
-using System;
 
 public class ArkanoidController : MonoBehaviour
 {
@@ -144,9 +142,23 @@ public class ArkanoidController : MonoBehaviour
                 SetExtraBall();
             }
         }
-        else if (kind == PowerUpKind.FastBall)
+        else if (kind == PowerUpKind.FastBall || kind == PowerUpKind.SlowBall)
         {
+            for (int i = 0; i < _balls.Count; i++)
+            {
+                _balls[i].ChangeBallSpeed(kind);
+            }
 
+            IEnumerator EndPowerUpTime()
+            {
+                yield return new WaitForSeconds(5f);// Wait for five seconds
+                for (int i = 0; i < _balls.Count; i++)
+                {
+                    _balls[i].ResetBallSpeed();
+                }
+            }
+
+            StartCoroutine(EndPowerUpTime());
         }
         else
         {

@@ -6,6 +6,7 @@ public enum PowerUpKind
     LargePaddle,
     SmallPaddle,
     MultiBall,
+    SlowBall,
     FastBall
 }
 
@@ -31,7 +32,7 @@ public class PowerUps : MonoBehaviour
         _renderer = GetComponentInChildren<SpriteRenderer>();
 
         // powerUp aleatorio del enum para renderizar
-        _kind = (PowerUpKind)Random.Range(0, 3);
+        _kind = (PowerUpKind)Random.Range(0, 5);
         _renderer.sprite = GetPowerUpSprite(_kind);
     }
 
